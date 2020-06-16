@@ -26,7 +26,21 @@
             <li nz-menu-item nzMatchRouter>
               <a routerLink="/welcome/aws">AWS</a>
             </li>
+            <li nz-menu-item nzMatchRouter>
+                <a routerLink="/welcome/nodejs">Node.js</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+                <a routerLink="/welcome/angular">Angular</a>
+            </li>
           </ul>
+          </li>
+          <li nz-submenu nzOpen nzTitle="Login" nzIcon="login">
+              <ul> 
+              <li nz-menu-item nzMatchRouter>
+                  <button nz-button nzType="default">Google Login<i nz-icon nzType="google" nzTheme="outline"></i> </button>
+                </li>
+              </ul>
+          </li>
       </ul>
     </nz-sider>
     <nz-layout>
