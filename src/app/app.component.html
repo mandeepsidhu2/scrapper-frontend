@@ -1,48 +1,47 @@
 <nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar"
-            nzCollapsible
-            nzWidth="256px"
-            nzBreakpoint="md"
-            [(nzCollapsed)]="isCollapsed"
-            [nzTrigger]="null">
-    <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
-        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
-        <h1>ZBIO Info Stack</h1>
-      </a>
-    </div>
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      
-        <li nz-menu-item nzMatchRouter>
-        <input nz-input placeholder="Basic usage" >
-      </li>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome/kubernetes">Kubernetes</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome/docker">Docker</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome/aws">AWS</a>
-          </li>
-        
-    </ul>
-  </nz-sider>
-  <nz-layout>
-    <nz-header>
-      <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <i class="trigger"
-               nz-icon
-               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></i>
-        </span>
+    <nz-sider class="menu-sidebar"
+              nzCollapsible
+              nzWidth="256px"
+              nzBreakpoint="md"
+              [(nzCollapsed)]="isCollapsed"
+              [nzTrigger]="null">
+      <div class="sidebar-logo">
+        <a href="https://ng.ant.design/" target="_blank">
+          <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+          <h1>ZBIO Info Stack</h1>
+        </a>
       </div>
-    </nz-header>
-    <nz-content>
-      <div class="inner-content">
-        <router-outlet></router-outlet>
-      </div>
-    </nz-content>
+      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+          <li nz-submenu nzOpen nzTitle="Topics" nzIcon="dashboard">
+            <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/welcome/kubernetes">Kubernetes</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/welcome/docker">Docker</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/welcome/aws">AWS</a>
+            </li>
+          </ul>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-header>
+        <div class="app-header">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+              <i class="trigger"
+                 nz-icon
+                 [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+              ></i>
+          </span>
+        </div>
+      </nz-header>
+      <nz-content>
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
   </nz-layout>
-</nz-layout>
+  
