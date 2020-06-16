@@ -5,3 +5,7 @@ p {
       height: 75vh;
       overflow: auto;
   }
+nz-space-item nz-card{
+    min-width:90vw;
+    max-width:90vw
+}
