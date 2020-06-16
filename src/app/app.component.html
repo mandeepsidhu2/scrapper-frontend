@@ -6,15 +6,20 @@
               [(nzCollapsed)]="isCollapsed"
               [nzTrigger]="null">
       <div class="sidebar-logo">
-        <a href="https://ng.ant.design/" target="_blank">
-          <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <a href="https://zb.io/" target="_blank">
+          <img src="../assets/image.png" alt="logo">
           <h1>ZBIO Info Stack</h1>
         </a>
+      </div>
+     
+      <div *ngIf="loggedIn" class="sidebar-logo">
+        <nz-avatar nzIcon="user" nzSrc="{{imageUrl}}"></nz-avatar>
+        <h1 style="color: azure">{{userName}}</h1>
       </div>
       <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
           <li nz-submenu nzOpen nzTitle="Topics" nzIcon="dashboard">
             <ul>
-              <li nz-menu-item nzMatchRouter>
+              <li *ngIf="loggedIn" nz-menu-item nzMatchRouter>
                 <input (keydown)="search($event)"style="width: 80%;" nz-input placeholder="Enter Keyword" [(ngModel)]="topic" />
               </li>
             <li nz-menu-item nzMatchRouter>
@@ -34,10 +39,17 @@
             </li>
           </ul>
           </li>
-          <li nz-submenu nzOpen nzTitle="Login" nzIcon="login">
+          <li *ngIf="!loggedIn" nz-submenu nzOpen nzTitle="Login" nzIcon="login">
               <ul> 
               <li nz-menu-item nzMatchRouter>
-                  <button nz-button nzType="default">Google Login<i nz-icon nzType="google" nzTheme="outline"></i> </button>
+                  <button nz-button nzType="default" (click)="signInWithGoogle()">Google Login<i nz-icon nzType="google" nzTheme="outline"></i> </button>
+                </li>
+              </ul>
+          </li>
+          <li *ngIf="loggedIn" nz-submenu nzOpen nzTitle="Logout" nzIcon="logout">
+              <ul> 
+              <li nz-menu-item nzMatchRouter>
+                  <button nz-button nzType="danger" (click)="signOut()">Logout</button>
                 </li>
               </ul>
           </li>
