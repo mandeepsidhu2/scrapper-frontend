@@ -17,19 +17,17 @@ export class WelcomeComponent implements OnInit {
   param:any
   data:Array<any>=[]
   ngOnInit() {
+   
     this.activatedRoute.paramMap.subscribe(data=>{
       this.param=data.get('topic')
-      // this.rssDataService.getRssData('medium',this.param).subscribe(data=>{
-      //   this.data=data;
-      //   console.log(this.data)
-      // })
+      if(this.param==null)
+      this.param="docker"
     let medium=this.rssDataService.getRssData('medium',this.param)
     let reddit=this.rssDataService.getRssData('reddit',this.param)
     let devto=this.rssDataService.getRssData('devto',this.param)
     let total=zip(medium,reddit,devto,(medium:any,reddit:any,devto:any)=>({medium,reddit,devto})).subscribe(
       triplet=>{
-       
-        this.data=triplet.reddit
+       this.data=triplet.reddit
         for(let i=0;i<triplet.medium.length;i++)
         this.data.push(triplet.medium[i])
         for(let i=0;i<triplet.devto.length;i++)
