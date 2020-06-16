@@ -16,9 +16,13 @@ export class WelcomeComponent implements OnInit {
   }
   param:any
   data:Array<any>=[]
+  loading:Boolean=true;
   ngOnInit() {
    
     this.activatedRoute.paramMap.subscribe(data=>{
+      for(let i=0;i<this.data.length;i++)
+       this.data[i]['title']=""
+      this.loading=true;
       this.param=data.get('topic')
       if(this.param==null)
       this.param="docker"
@@ -33,6 +37,7 @@ export class WelcomeComponent implements OnInit {
         for(let i=0;i<triplet.devto.length;i++)
         this.data.push(triplet.devto[i])
         this.data=shuffle(this.data)
+        this.loading=false;
       }
     )
     })

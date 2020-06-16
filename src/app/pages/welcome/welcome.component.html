@@ -2,7 +2,7 @@
 <span *ngFor="let feed of data">
     <nz-space nzDirection="vertical">
         <nz-space-item> 
-            <nz-card style="width:100%;" nzTitle="{{feed['title']}}" [nzExtra]="extraTemplate">
+            <nz-card [nzLoading]="loading" style="width:100%;" nzTitle="{{feed['title']}}" [nzExtra]="extraTemplate" >
                 <nz-space nzDirection="vertical">
                     <nz-space-item> 
                         <nz-avatar nzSize="small" nzIcon="user">{{feed['creator']}}</nz-avatar> {{feed['creator']}}
