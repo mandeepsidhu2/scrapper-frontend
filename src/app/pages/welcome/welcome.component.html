@@ -1,84 +1,25 @@
-hi
-{{param}}
 <div class="container">
-<nz-card style="width:100%;" nzTitle="Card title" [nzExtra]="extraTemplate">
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a>More</a>
-</ng-template>
-<nz-card style="width:100%;" nzTitle="Card title" [nzExtra]="extraTemplate">
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a>More</a>
-</ng-template>
-<nz-card style="width:100%;" nzTitle="Card title" [nzExtra]="extraTemplate">
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a>More</a>
-</ng-template>
-<nz-card style="width:100%;" nzTitle="Card title" [nzExtra]="extraTemplate">
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a>More</a>
-</ng-template>
-<nz-card style="width:100%;" nzTitle="Card title" [nzExtra]="extraTemplate">
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a>More</a>
-</ng-template>
-<nz-card style="width:100%;" nzTitle="Card title" [nzExtra]="extraTemplate">
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a>More</a>
-</ng-template>
-<nz-card style="width:100%;" nzTitle="Card title" [nzExtra]="extraTemplate">
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a>More</a>
-</ng-template>
-<nz-card style="width:100%;" nzTitle="Card title" [nzExtra]="extraTemplate">
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a>More</a>
-</ng-template>
-<nz-card style="width:100%;" nzTitle="Card title" [nzExtra]="extraTemplate">
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a>More</a>
-</ng-template>
-<nz-card style="width:100%;" nzTitle="Card title" [nzExtra]="extraTemplate">
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a>More</a>
-</ng-template>
+       
+    <span *ngFor="let feed of data">
+        <nz-space nzDirection="vertical">
+            <nz-space-item> 
+                <nz-card style="width:100%;" nzTitle="{{feed['title']}}" [nzExtra]="extraTemplate">
+                    <nz-avatar nzSize="small" nzIcon="user">{{feed['creator']}}</nz-avatar>
+                    {{feed['creator']}}
+                    <h4>Published Date</h4>
+                    <p>{{feed['pubDate']}}</p>
+                    <p>{{feed['contentSnippet']}}</p>
+                    <h4>Associated tags</h4>
+                    <span *ngFor="let tag of feed['categories']" >
+                        <a href="https://medium.com/search?q={{tag}}" target="_blank">
+                        <nz-tag [nzColor]="'blue'">{{tag}}</nz-tag>
+                        </a>
+                    </span>
+                    </nz-card>
+                    <ng-template #extraTemplate>
+                        <a href="{{feed['link']}}" target="_blank" ><i nz-icon nzType="expand" nzTheme="outline"></i></a>
+                    </ng-template>
+            </nz-space-item>
+        </nz-space>
+    </span>
 </div>
