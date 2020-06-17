@@ -20,12 +20,16 @@ export class AppComponent {
     private cookieService: CookieService
   ) {}
   loggedIn:Boolean=false;
+
   ngOnInit() {
     this.loggedIn=atob(this.cookieService.get(btoa('loggedIn')))=='true'?true:false;
    if(this.loggedIn){
     this.userName=this.cookieService.get('name')
     this.imageUrl=this.cookieService.get('imageUrl')
    }
+  }
+  openStats(){
+    this.router.navigate(['welcome/stats']);
   }
   signInWithGoogle(): void {
     this.userData=this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data=>{

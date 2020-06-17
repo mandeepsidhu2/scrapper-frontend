@@ -18,6 +18,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { SocialLoginModule,SocialAuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+
 registerLocaleData(en);
 
 @NgModule({
