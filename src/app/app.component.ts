@@ -29,7 +29,7 @@ export class AppComponent {
    }
   }
   openStats(){
-    this.router.navigate(['welcome/stats']);
+    this.router.navigate(['stats']);
   }
   signInWithGoogle(): void {
     this.userData=this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data=>{
@@ -53,9 +53,8 @@ export class AppComponent {
     this.authService.signOut();
   }
   search(event:any){
-    if(event.keyCode==13){
-      console.log(event,this.topic)
-     this.router.navigate(['welcome/'+this.topic]);
-    }
+    if(event.keyCode==13)
+     this.router.navigate([this.topic]);
+    
   }
 }

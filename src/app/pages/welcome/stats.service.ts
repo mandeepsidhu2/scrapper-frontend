@@ -12,7 +12,6 @@ export class StatsService {
   getStats():Observable<any>{
     this.endpoint=this.baseUrl+'/hits';
     let headers=new HttpHeaders().set('Content-Type','application/json').set('Accept','application/json')
-    console.log(this.endpoint)
     return this.http.get<any>(this.endpoint,{headers});
   }
 }

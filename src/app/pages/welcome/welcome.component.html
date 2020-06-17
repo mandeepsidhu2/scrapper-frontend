@@ -25,7 +25,7 @@
                     <nz-space-item *ngIf="feed['categories'].length!=0"> 
                         <h4>Associated tags</h4>
                         <span  *ngFor="let tag of feed['categories']" >
-                            <a href="https://medium.com/search?q={{tag}}" target="_blank">
+                            <a (click)="openLink(feed['website'],tag)">
                             <nz-tag [nzColor]="'blue'">{{tag}}</nz-tag>
                             </a>
                         </span>

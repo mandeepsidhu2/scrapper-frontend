@@ -42,7 +42,15 @@ export class WelcomeComponent implements OnInit {
     )
     })
   }
-
+  openLink(website:any,tag:any){
+    let url="#"
+    if(website=="medium")
+     url="https://medium.com/search?q="+tag;
+    else
+      url="https://dev.to/t/"+tag;
+    
+    window.open(url, "_blank");
+  }
 }
 function shuffle(array:Array<any>):Array<any>{
   var m = array.length, t, i;
