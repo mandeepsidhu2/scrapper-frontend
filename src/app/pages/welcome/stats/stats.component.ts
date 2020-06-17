@@ -13,10 +13,20 @@ export class StatsComponent implements OnInit {
   }
   statsData:any
   loggedIn:Boolean;
+  loading:Boolean=true;
   ngOnInit(): void {
+    this.loading=true;
     this.loggedIn=atob(this.cookieService.get(btoa('loggedIn')))=='true'?true:false;
     this.statsService.getStats().subscribe(data=>{
       this.statsData=data.data;
+      this.loading=false;
+    })
+  }
+  refresh(){
+    this.loading=true;
+    this.statsService.getStats().subscribe(data=>{
+      this.statsData=data.data;
+      this.loading=false;
     })
   }
 

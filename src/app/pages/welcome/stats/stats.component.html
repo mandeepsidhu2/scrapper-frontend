@@ -1,5 +1,11 @@
-<h1>Statistics for overall searches</h1>
+<div style="display: flex;justify-content: space-between">
+    <h1>Statistics for overall searches</h1>
+    <button nz-button nzType="primary" (click)="refresh()">Refresh</button>
+</div>
 <div *ngIf="loggedIn" class="container">
+    <div style="display: flex;justify-content:center">
+        <button *ngIf="loading"nz-button nzLoading nzType="primary" nzShape="circle"></button>
+    </div>
     <span *ngFor="let data of statsData,let i=index">
             <div *ngIf="i<(statsData.length%2==0?statsData.length/2:statsData.length/2-1)"style="display:flex; justify-content: space-around">
                 <nz-statistic style="width: 35vw;text-align: center" nzValue="{{data['hits']}}" nzTitle="{{data['topic']}}"></nz-statistic>
