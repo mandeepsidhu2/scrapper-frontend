@@ -1,10 +1,16 @@
 <h1>Statistics for overall searches</h1>
-<div class="container">    
+<div class="container">
     <span *ngFor="let data of statsData,let i=index">
-            <div *ngIf="i<statsData.length/2"style="display:flex; justify-content: space-around">
+            <div *ngIf="i<(statsData.length%2==0?statsData.length/2:statsData.length/2-1)"style="display:flex; justify-content: space-around">
                 <nz-statistic style="width: 35vw;text-align: center" nzValue="{{data['hits']}}" nzTitle="{{data['topic']}}"></nz-statistic>
                 <nz-statistic style="width: 35vw;text-align: center" nzValue="{{statsData[statsData.length-1-i]['hits']}}" nzTitle="{{statsData[statsData.length-1-i]['topic']}}"></nz-statistic>
-            </div>   
-            <div style="height: 10%"></div>
+                
+            </div> 
+            <div *ngIf="i<(statsData.length%2==0?statsData.length/2:statsData.length/2-1)" style="height: 10%"></div>  
     </span>
+    <div *ngIf="(statsData.length%2!=0)"style="display:flex; justify-content: space-around">
+        <nz-statistic style="width: 35vw;text-align: center" nzValue="{{statsData[statsData.length/2-0.5]['hits']}}" nzTitle="{{statsData[statsData.length/2-0.5]['topic']}}"></nz-statistic>
+    </div>  
+    <div  *ngIf="(statsData.length%2!=0)" style="height: 10%"></div>  
+
 </div>
