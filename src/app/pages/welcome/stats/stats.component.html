@@ -1,11 +1,9 @@
-<span *ngFor="let data of statsData">
-    {{data |json}}
-<!-- <nz-row nzGutter="16">
-    <nz-col nzSpan="12">
-      <nz-statistic [nzValue]="(1949101 | number)!" [nzTitle]="'Active Users'"></nz-statistic>
-    </nz-col>
-    <nz-col nzSpan="12">
-      <nz-statistic [nzValue]="(2019.111 | number: '1.0-2')!" [nzTitle]="'Account Balance (CNY)'"></nz-statistic>
-    </nz-col>
-  </nz-row> -->
-</span>
+<div class="container">    
+    <span *ngFor="let data of statsData,let i=index">
+            <div *ngIf="i<statsData.length/2"style="display:flex; justify-content: space-around">
+                <nz-statistic style="width: 35vw;text-align: center" nzValue="{{data['hits']}}" nzTitle="{{data['topic']}}"></nz-statistic>
+                <nz-statistic style="width: 35vw;text-align: center" nzValue="{{statsData[statsData.length-1-i]['hits']}}" nzTitle="{{statsData[statsData.length-1-i]['topic']}}"></nz-statistic>
+            </div>   
+            <div style="height: 10%"></div>
+    </span>
+</div>

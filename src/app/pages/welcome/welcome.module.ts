@@ -10,6 +10,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { StatsComponent } from './stats/stats.component';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+
 @NgModule({
   imports: [NzStatisticModule,NzButtonModule,WelcomeRoutingModule,NzCardModule,CommonModule,NzAvatarModule,NzTagModule,NzIconModule,NzSpaceModule],
   declarations: [WelcomeComponent, StatsComponent],
