@@ -17,11 +17,10 @@ export class WelcomeComponent implements OnInit {
   param:any
   data:Array<any>=[]
   loading:Boolean=true;
+  error:Boolean=false;
   ngOnInit() {
    
     this.activatedRoute.paramMap.subscribe(data=>{
-      for(let i=0;i<this.data.length;i++)
-       this.data[i]['title']=""
       this.loading=true;
       this.param=data.get('topic')
       if(this.param==null)
@@ -38,8 +37,10 @@ export class WelcomeComponent implements OnInit {
         this.data.push(triplet.devto[i])
         this.data=shuffle(this.data)
         this.loading=false;
-      }
+      },
+      (err) => {this.error=true;}
     )
+    
     })
   }
   openLink(website:any,tag:any){
