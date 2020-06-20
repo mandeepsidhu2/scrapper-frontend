@@ -11,10 +11,10 @@ spec:
       # Port accessible inside cluster
       port: 8081
       # Port to forward to inside the pod
-      targetPort: 8080
+      targetPort: 80
       # Port accessible outside cluster
       nodePort: 30001
-  type: LoadBalancer
+  type: NodePort
  
  
  
@@ -22,6 +22,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: scrapper
   name: scrapperdeployment
 spec:
   replicas: 5
@@ -37,4 +39,4 @@ spec:
         - name: scrapper
           image: cuber12/scrapper:v1
           ports:
-            - containerPort: 8080
+            - containerPort: 80
