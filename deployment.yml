@@ -1,0 +1,40 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: scrapperservice
+spec:
+  selector:
+    app: scrapper
+  ports:
+    - protocol: "TCP"
+      # Port accessible inside cluster
+      port: 8081
+      # Port to forward to inside the pod
+      targetPort: 8080
+      # Port accessible outside cluster
+      nodePort: 30001
+  type: LoadBalancer
+ 
+ 
+ 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scrapperdeployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: scrapper
+  template:
+    metadata:
+      labels:
+        app: scrapper
+    spec:
+      containers:
+        - name: scrapper
+          image: cuber12/scrapper:v1
+          ports:
+            - containerPort: 8080
